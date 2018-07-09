@@ -46,6 +46,9 @@
           cursor: pointer;
           height: 24px;
           line-height: 24px;
+          &.active{
+            color: #fff;
+          }
         }
       }
     }
@@ -73,7 +76,7 @@
             <span>质检质量</span>
           </div>
           <ul>
-            <li v-for="(item, index) in dataZJ" :key="index" @click="FuncZj(index)">{{ item }}</li>
+            <li v-for="(item, index) in dataZJ" :key="index" @click="FuncZj(index)" :class="{active: dataZJIndex == index}">{{ item }}</li>
           </ul>
         </div>
         <div class="list">
@@ -103,6 +106,7 @@ export default {
         '质检复查',
         '复检结果'
       ],
+      dataZJIndex: 0,
       dataDepart: [
         '部门管理',
         '角色管理',
@@ -113,6 +117,7 @@ export default {
   },
   methods: {
     FuncZj (index) {
+      this.dataZJIndex = index
       switch (index) {
         case 0:
           this.$router.push('/Index/zjfp')
