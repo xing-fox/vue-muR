@@ -1,0 +1,107 @@
+<style lang="less" scoped>
+#page {
+  width: 100%;
+  height: 100%;
+  .header {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    .title {
+      color: #fff;
+      font-size: 16px;
+      width: 180px;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      background: #5294e0;
+    }
+  }
+  .content {
+    width: 180px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: box;
+    .contLeft {
+      width: 180px;
+      height: 100%;
+      background: #2f313a;
+      padding: 20px 0 0 0;
+      box-sizing: border-box;
+      .list {
+        color: #fff;
+        width: 100%;
+        text-align: center;
+        .listTitle {
+          font-size: 16px;
+          height: 40px;
+          line-height: 40px;
+          text-align: left;
+          padding: 0 0 0 40px;
+        }
+        ul li {
+          color: #a8adaf;
+          font-size: 14px;
+          cursor: pointer;
+          height: 24px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}
+</style>
+
+<template>
+  <div id="page">
+    <div class="header">
+      <div class="title">
+        <span>智能语音检测</span>
+      </div>
+    </div>
+    <div class="content">
+      <div class="contLeft">
+        <div class="list">
+          <div class="listTitle">
+            <span>质检质量</span>
+          </div>
+          <ul>
+            <li v-for="(item, index) in dataZJ" :key="index">{{ item }}</li>
+          </ul>
+        </div>
+        <div class="list">
+          <div class="listTitle">
+            <span>系统管理</span>
+          </div>
+          <ul>
+            <li v-for="(item, index) in dataDepart" :key="index">{{ item }}</li>  
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "Index",
+  data() {
+    return {
+      dataZJ: [
+        '质检分配',
+        '质检审核',
+        '质检复查',
+        '复检结果'
+      ],
+      dataDepart: [
+        '部门管理',
+        '角色管理',
+        '员工管理',
+        '委外管理'
+      ]
+    }
+  }
+}
+</script>
+
