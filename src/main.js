@@ -3,6 +3,10 @@ import App from './App'
 import router from './router'
 import http from '@/fetch/api'
 import fastclick from 'fastclick'
+import iView from 'iview'
+import 'iview/dist/styles/iview.css'
+
+Vue.use(iView)
 
 Vue.prototype.$http = http
 Vue.config.productionTip = false

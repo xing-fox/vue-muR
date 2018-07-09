@@ -16,13 +16,13 @@
     }
   }
   .content {
-    width: 180px;
+    width: 100%;
     position: absolute;
     top: 50px;
     left: 0;
     right: 0;
     bottom: 0;
-    display: box;
+    display: flex;
     .contLeft {
       width: 180px;
       height: 100%;
@@ -49,6 +49,12 @@
         }
       }
     }
+    .contRight{
+      flex: 1;
+      height: 100%;
+      padding: 20px 0 0 0;
+      box-sizing: border-box;
+    }
   }
 }
 </style>
@@ -67,7 +73,7 @@
             <span>质检质量</span>
           </div>
           <ul>
-            <li v-for="(item, index) in dataZJ" :key="index">{{ item }}</li>
+            <li v-for="(item, index) in dataZJ" :key="index" @click="FuncZj(index)">{{ item }}</li>
           </ul>
         </div>
         <div class="list">
@@ -78,6 +84,9 @@
             <li v-for="(item, index) in dataDepart" :key="index">{{ item }}</li>  
           </ul>
         </div>
+      </div>
+      <div class="contRight">
+        <router-view/>
       </div>
     </div>
   </div>
@@ -100,6 +109,24 @@ export default {
         '员工管理',
         '委外管理'
       ]
+    }
+  },
+  methods: {
+    FuncZj (index) {
+      switch (index) {
+        case 0:
+          this.$router.push('/Index/zjfp')
+          break;
+        case 1:
+          this.$router.push('/Index/zjsh')
+          break;
+        case 2:
+          this.$router.push('/Index/zjfh')
+          break;
+        case 3:
+          this.$router.push('/Index/fhjg')
+          break;  
+      }
     }
   }
 }
