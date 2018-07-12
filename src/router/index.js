@@ -6,6 +6,7 @@ const Zjfp = resolve => require(['@/view/zjfp'], resolve)
 const Zjsh = resolve => require(['@/view/zjsh'], resolve)
 const Zjfh = resolve => require(['@/view/zjfh'], resolve)
 const Fhjg = resolve => require(['@/view/fhjg'], resolve)
+const Audio = resolve => require(['@/view/audio'], resolve)
 
 Vue.use(Router)
 
@@ -17,7 +18,7 @@ export default new Router({
       name: 'Index',
       component: Index,
       meta: {
-        title: '潮机头条'
+        title: '智能质检系统'
       },
       children: [
         {
@@ -46,6 +47,13 @@ export default new Router({
           component: Fhjg,
           meta: {
             title: '复核结果'
+          }
+        },
+        {
+          path: 'audio',
+          component: Audio,
+          meta: {
+            title: '质检播放'
           }
         }
       ]

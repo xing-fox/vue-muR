@@ -63,7 +63,11 @@
           <td>123</td>
           <td>123</td>
           <td>
-            <span>审核</span>
+            <span>
+              <router-link :to="{path:'audio'}">
+                审核
+              </router-link>
+            </span>
             <span>下载</span>
           </td>
         </tr>
