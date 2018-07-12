@@ -178,6 +178,7 @@ export default {
     },
     outFunc (e) {
       this.dragFunc = false
+      return false
     },
     dragFunc () {
       let self = this
