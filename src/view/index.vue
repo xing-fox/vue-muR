@@ -55,8 +55,9 @@
     .contRight{
       flex: 1;
       height: 100%;
-      padding: 20px 0 0 0;
+      background: #f3f5f7;
       box-sizing: border-box;
+      position: relative;
     }
   }
 }
