@@ -36,7 +36,7 @@
           position: absolute;
           top: 0;
           bottom: 0;
-          margin: auto 20px;
+          margin: auto 13px;
           .play{
             cursor: pointer;
             width: 30px;
@@ -54,11 +54,17 @@
             background-repeat: no-repeat; 
           }
         }
+        .select{
+          width: 75px;
+          position: absolute;
+          top: 10px;
+          left: 55px;
+        }
         .audio_line{
           height: 4px;
           background: #fff;
           position: absolute;
-          left: 70px;
+          left: 150px;
           right: 100px;
           top: 0;
           bottom: 0;
@@ -121,6 +127,37 @@
         background: #fff;
         border: 2px solid #f6f6f6;
         box-sizing: border-box;
+        .talkTitle{
+          margin: 0 0 20px 0;
+          position: relative;
+          img{
+            width: 20px;
+            height: 20px;
+            margin: 0 5px 0 0;
+            vertical-align: middle;
+          }
+          span{
+            color: #333;
+            font-size: 14px;
+            line-height: 20px;
+            margin: 0 20px 0 0;
+            vertical-align: middle;
+          }
+          .showTime{
+            position: absolute;
+            top: 0;
+            right: 0;
+            display: inline-block;
+            color: #66a6ff;
+            font-size: 14px;
+            cursor:pointer;
+            width: 100px;
+            text-align: center;
+            border-radius: 3px;
+            vertical-align: middle;
+            border: 1px solid #ccc;
+          }
+        }
         .talkLeft{
           font-size: 0;
           margin: 0 50px 20px 0;
@@ -145,6 +182,9 @@
             background: #f6f6f6;
             vertical-align: top;
             position: relative;
+            .color{
+              color: #ee6723;
+            }
             &:before{
               content: '';
               width: 0;
@@ -319,6 +359,9 @@
           <div class="play" @click="audioFunc" v-if="control"></div>
           <div class="pause" @click="audioFunc" v-else></div>
         </div>
+        <Select class="select" v-model="model1" style="width:75px">
+          <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+        </Select>
         <div class="audio_line" ref="audioLine" @click="clickPoint">
           <div class="lineBall" ref="audioBall"></div>
           <div class="audio_keyWords animated bounce">
@@ -332,17 +375,24 @@
     </div>
     <div class="audioContent">
       <div class="contentLeft">
+        <div class="talkTitle">
+          <img src="../assets/images/icon_btn.jpg" alt="">
+          <span>客户</span>
+          <img src="../assets/images/icon_man.jpg" alt="">
+          <span>坐席</span>
+          <div class="showTime" @click="timeStatus = !timeStatus">显示录音时间</div>
+        </div>
         <div class="talkLeft">
           <img src="../assets/images/icon_btn.jpg" alt="">
-          <span class="talkContent">您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签</span>
+          <span class="talkContent"> <span v-if="timeStatus">2013-12-12 12:00:00</span> 您的浏览器不支持标签您的浏览器 <span class="color">大蜀山</span> 标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签</span>
         </div>
         <div class="talkRight">
           <img src="../assets/images/icon_man.jpg" alt="">
-          <span class="talkContent">您的浏览器不支持标签</span>
+          <span class="talkContent"> <span v-if="timeStatus">2013-12-12 12:00:00</span> 您的浏览器不支持标签</span>
         </div>
         <div class="talkLeft">
           <img src="../assets/images/icon_btn.jpg" alt="">
-          <span class="talkContent">您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签</span>
+          <span class="talkContent"> <span v-if="timeStatus">2013-12-12 12:00:00</span> 您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签</span>
         </div>
         <div class="talkRight">
           <img src="../assets/images/icon_man.jpg" alt="">
@@ -443,7 +493,23 @@ export default {
       startX: '',
       dragStatus: false,
       total_Time: 0,
-      current_Time: 0
+      current_Time: 0,
+      timeStatus: false,
+      cityList: [
+        {
+          value: '1',
+          label: '快进x1'
+        },
+        {
+          value: '2',
+          label: '快进x2'
+        },
+        {
+          value: '3',
+          label: '快进x3'
+        }
+    ],
+    model1: '快进x1'
     }
   },
   mounted () {
@@ -466,21 +532,21 @@ export default {
       this.control = !this.control
     },
     // downFunc (e) {
-    //   this.dragStatus = true
-    //   e.preventDefault()
-    //   this.startX = e.pageX
+      //   this.dragStatus = true
+      //   e.preventDefault()
+      //   this.startX = e.pageX
     // },
     // moveFunc (e) {
-    //   if (this.dragStatus) {
-    //     e.preventDefault()
-    //     let x = e.pageX - this.startX
-    //     this.ballStyle.style.left =  -7 + x + 'px'
-    //   }
+      //   if (this.dragStatus) {
+      //     e.preventDefault()
+      //     let x = e.pageX - this.startX
+      //     this.ballStyle.style.left =  -7 + x + 'px'
+      //   }
     // },
     // upFunc (e) {
-    //   this.dragStatus = false
-    //   // let _width = this.ballStyle.style.left
-    //   // console.log(_width)
+      //   this.dragStatus = false
+      //   // let _width = this.ballStyle.style.left
+      //   // console.log(_width)
     // },
     clickPoint (e) {
       e.preventDefault()

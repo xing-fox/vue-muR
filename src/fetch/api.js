@@ -7,6 +7,9 @@ const env = process.env.NODE_ENV
 if (env === 'development') {
   // axios.defaults.baseURL = 'http://118.25.13.116:8981/mrsyg' // 本地测试
   axios.defaults.withCredentials = true
+} else {
+  // axios.defaults.baseURL = 'http://118.25.13.116:8981/mrsyg' // 本地测试
+  axios.defaults.withCredentials = true
 }
 
 axios.interceptors.request.use(config => {

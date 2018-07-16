@@ -343,7 +343,6 @@ export default {
   .table{
     width: 100%;
     margin: 30px 0 0 0;
-    border: 1px solid #ccc;
     // tr{
     //   width: 100%;
     //   display: flex;
