@@ -12,7 +12,7 @@
       height: 50px;
       line-height: 50px;
       text-align: center;
-      background: #5294e0;
+      background: #66a6ff;
     }
   }
   .content {
@@ -26,28 +26,30 @@
     .contLeft {
       width: 180px;
       height: 100%;
-      background: #2f313a;
+      background: #fefefe;
       padding: 20px 0 0 0;
       box-sizing: border-box;
       .list {
-        color: #fff;
+        color: #333;
         width: 100%;
         text-align: center;
         .listTitle {
-          font-size: 16px;
+          color: #999;
+          font-size: 12px;
           height: 40px;
           line-height: 40px;
           text-align: left;
-          padding: 0 0 0 40px;
+          padding: 0 0 0 20px;
         }
         ul li {
-          color: #a8adaf;
-          font-size: 14px;
+          color: #333;
+          font-size: 12px;
           cursor: pointer;
-          height: 24px;
-          line-height: 24px;
+          height: 30px;
+          line-height: 30px;
           &.active{
-            color: #fff;
+            color: #758DFF;
+            border-left: 3px solid #66a6ff;
           }
         }
       }

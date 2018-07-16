@@ -48,7 +48,7 @@
       <li v-if="selBanStatus">分配</li>
       <li>撤回</li>
     </ul>
-    <div class="table">
+    <!-- <div class="table">
       <table border="1" cellspacing="1">
         <tr>
           <td><input type="checkbox"></td>
@@ -84,7 +84,8 @@
           <td>123</td>
         </tr>
       </table>
-    </div>
+    </div> -->
+    <Table class="table" border ref="selection" :columns="columns4" :data="data1"></Table>
     <div class="pagesNumber">
       <div class="numberLeft">
         <span>从1到10条 共300条记录, 每页显示</span>
@@ -180,7 +181,81 @@ export default {
       input2: '',
       input3: '',
       input4: '',
-      selBanStatus: true
+      selBanStatus: true,
+      columns4: [
+        {
+            type: 'selection',
+            width: 60,
+            align: 'center'
+        },
+        {
+            title: '公司名称',
+            key: 'name'
+        },
+        {
+            title: '文件名称',
+            key: 'age'
+        },
+        {
+            title: '工单编号',
+            key: 'address'
+        },
+        {
+            title: '手机号',
+            key: 'address'
+        },
+        {
+            title: '工单编号',
+            key: 'address'
+        },
+        {
+            title: 'AI质检结果',
+            key: 'address'
+        },
+        {
+            title: '呼出时间',
+            key: 'address'
+        },
+        {
+            title: '通话时长',
+            key: 'address'
+        },
+        {
+            title: '通话时长',
+            key: 'address'
+        }
+      ],
+      data1: [
+        {
+            name: 'John Brown',
+            age: 18,
+            address: 'New York No. 1 Lake Park',
+            date: '2016-10-03'
+        },
+        {
+            name: 'Jim Green',
+            age: 24,
+            address: 'London No. 1 Lake Park',
+            date: '2016-10-01'
+        },
+        {
+            name: 'Joe Black',
+            age: 30,
+            address: 'Sydney No. 1 Lake Park',
+            date: '2016-10-02'
+        },
+        {
+            name: 'Jon Snow',
+            age: 26,
+            address: 'Ottawa No. 2 Lake Park',
+            date: '2016-10-04'
+        }
+      ]
+    }
+  },
+  methods: {
+    handleSelectAll (status) {
+      this.$refs.selection.selectAll(status);
     }
   }
 };
@@ -265,24 +340,24 @@ export default {
     text-align: center;
     border-radius: 3px;
   }
-  table{
+  .table{
     width: 100%;
     margin: 30px 0 0 0;
     border: 1px solid #ccc;
-    tr{
-      width: 100%;
-      display: flex;
-      &:nth-child(1){
-        td{
-          background: #f2f2f2;
-        }
-      }
-      td{
-        flex: 1;
-        line-height: 30px;
-        text-align: center;
-      }  
-    }
+    // tr{
+    //   width: 100%;
+    //   display: flex;
+    //   &:nth-child(1){
+    //     td{
+    //       background: #f2f2f2;
+    //     }
+    //   }
+    //   td{
+    //     flex: 1;
+    //     line-height: 30px;
+    //     text-align: center;
+    //   }  
+    // }
   }
   .pagesNumber{
     width: 100%;

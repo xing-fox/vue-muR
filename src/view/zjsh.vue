@@ -40,7 +40,7 @@
       </div>
       <button>查询</button>
     </div>
-    <div class="table">
+    <!-- <div class="table">
       <table border="1" cellspacing="1">
         <tr>
           <td>公司名称</td>
@@ -86,7 +86,8 @@
           </td>
         </tr>
       </table>
-    </div>
+    </div> -->
+    <Table class="table" border :columns="columns7" :data="data6"></Table>
     <div class="pagesNumber">
       <div class="numberLeft">
         <span>从1到10条 共300条记录, 每页显示</span>
@@ -107,32 +108,32 @@ export default {
   name: "zjsh",
   data() {
     return {
-      cityList: [
-        {
-          value: "New York",
-          label: "New York"
-        },
-        {
-          value: "London",
-          label: "London"
-        },
-        {
-          value: "Sydney",
-          label: "Sydney"
-        },
-        {
-          value: "Ottawa",
-          label: "Ottawa"
-        },
-        {
-          value: "Paris",
-          label: "Paris"
-        },
-        {
-          value: "Canberra",
-          label: "Canberra"
-        }
-      ],
+      // cityList: [
+        //   {
+        //     value: "New York",
+        //     label: "New York"
+        //   },
+        //   {
+        //     value: "London",
+        //     label: "London"
+        //   },
+        //   {
+        //     value: "Sydney",
+        //     label: "Sydney"
+        //   },
+        //   {
+        //     value: "Ottawa",
+        //     label: "Ottawa"
+        //   },
+        //   {
+        //     value: "Paris",
+        //     label: "Paris"
+        //   },
+        //   {
+        //     value: "Canberra",
+        //     label: "Canberra"
+        //   }
+      // ],
       numberList: [
         {
           value: "1",
@@ -182,10 +183,103 @@ export default {
       input2: "",
       input3: "",
       input4: "",
-      selBanStatus: true
-    };
+      selBanStatus: true,
+      columns7: [
+        {
+          title: '公司名称',
+          key: 'age'
+        },
+        {
+          title: '文件名',
+          key: 'age'
+        },
+        {
+          title: '工单编号',
+          key: 'address'
+        },{
+          title: '电话号码',
+          key: 'age'
+        },
+        {
+          title: '客户姓名',
+          key: 'age'
+        },
+        {
+          title: '呼出时间',
+          key: 'address'
+        },
+        {
+          title: '通话时长',
+          key: 'age'
+        },
+        {
+          title: 'AI质检结果',
+          key: 'address'
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          width: 150,
+          align: 'center',
+          render: (h, params) => {
+            return h('div', [
+                h('Button', {
+                    props: {
+                      type: 'primary',
+                      size: 'small'
+                    },
+                    style: {
+                      marginRight: '5px'
+                    },
+                    on: {
+                        click: () => {
+                          // this.show(params.index)
+                          this.$router.push({
+                            path: '/Index/audio'
+                          })
+                        }
+                    }
+                }, '审核'),
+                h('Button', {
+                    props: {
+                        type: 'primary',
+                        size: 'small'
+                    },
+                    on: {
+                        click: () => {
+                            this.remove(params.index)
+                        }
+                    }
+                }, '下载')
+            ])
+          }
+        }
+      ],
+      data6: [
+        {
+            name: '公司名称',
+            age: 18,
+            address: 'New York No. 1 Lake Park'
+        },
+        {
+            name: '文件名',
+            age: 24,
+            address: 'London No. 1 Lake Park'
+        },
+        {
+            name: 'Joe Black',
+            age: 30,
+            address: 'Sydney No. 1 Lake Park'
+        },
+        {
+            name: 'Jon Snow',
+            age: 26,
+            address: 'Ottawa No. 2 Lake Park'
+        }
+      ]
+    }
   }
-};
+}
 </script>
 
 <style lang="less" scoped>
@@ -237,31 +331,34 @@ export default {
       margin: 0 30px 30px 50px;
     }
   }
-  table {
+  // table {
+  //   width: 100%;
+  //   margin: 30px 0 0 0;
+  //   border: 1px solid #ccc;
+  //   tr {
+  //     width: 100%;
+  //     display: flex;
+  //     &:nth-child(1) {
+  //       td {
+  //         background: #f2f2f2;
+  //       }
+  //     }
+  //     td {
+  //       flex: 1;
+  //       line-height: 30px;
+  //       text-align: center;
+  //       span{
+  //         color: #1491ff;
+  //         cursor: pointer;
+  //         &:hover{
+  //           text-decoration: underline;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  .table{
     width: 100%;
-    margin: 30px 0 0 0;
-    border: 1px solid #ccc;
-    tr {
-      width: 100%;
-      display: flex;
-      &:nth-child(1) {
-        td {
-          background: #f2f2f2;
-        }
-      }
-      td {
-        flex: 1;
-        line-height: 30px;
-        text-align: center;
-        span{
-          color: #1491ff;
-          cursor: pointer;
-          &:hover{
-            text-decoration: underline;
-          }
-        }
-      }
-    }
   }
   .pagesNumber {
     width: 100%;

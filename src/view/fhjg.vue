@@ -65,7 +65,7 @@
       <button>查询</button>
       <button>导出</button>
     </div>
-    <div class="table">
+    <!-- <div class="table">
       <table border="1" cellspacing="1">
         <tr>
           <td>公司名称</td>
@@ -119,7 +119,8 @@
           </td>
         </tr>
       </table>
-    </div>
+    </div> -->
+    <Table class="table" border :columns="columns7" :data="data6"></Table>
     <div class="pagesNumber">
       <div class="numberLeft">
         <span>从1到10条 共300条记录, 每页显示</span>
@@ -140,32 +141,32 @@ export default {
   name: "zjsh",
   data() {
     return {
-      cityList: [
-        {
-          value: "New York",
-          label: "New York"
-        },
-        {
-          value: "London",
-          label: "London"
-        },
-        {
-          value: "Sydney",
-          label: "Sydney"
-        },
-        {
-          value: "Ottawa",
-          label: "Ottawa"
-        },
-        {
-          value: "Paris",
-          label: "Paris"
-        },
-        {
-          value: "Canberra",
-          label: "Canberra"
-        }
-      ],
+      // cityList: [
+        //   {
+        //     value: "New York",
+        //     label: "New York"
+        //   },
+        //   {
+        //     value: "London",
+        //     label: "London"
+        //   },
+        //   {
+        //     value: "Sydney",
+        //     label: "Sydney"
+        //   },
+        //   {
+        //     value: "Ottawa",
+        //     label: "Ottawa"
+        //   },
+        //   {
+        //     value: "Paris",
+        //     label: "Paris"
+        //   },
+        //   {
+        //     value: "Canberra",
+        //     label: "Canberra"
+        //   }
+      // ],
       numberList: [
         {
           value: "1",
@@ -215,7 +216,117 @@ export default {
       input2: "",
       input3: "",
       input4: "",
-      selBanStatus: true
+      selBanStatus: true,
+      columns7: [
+        {
+          title: '公司名称',
+          key: 'age'
+        },
+        {
+          title: '文件名',
+          key: 'age'
+        },
+        {
+          title: '工单编号',
+          key: 'address'
+        },{
+          title: '电话号码',
+          key: 'age'
+        },
+        {
+          title: '客户姓名',
+          key: 'age'
+        },
+        {
+          title: '呼出时间',
+          key: 'address'
+        },
+        {
+          title: '通话时长',
+          key: 'age'
+        },
+        {
+          title: 'AI质检结果',
+          key: 'address'
+        },
+        {
+          title: '审核结果',
+          key: 'address'
+        },
+        {
+          title: '审核备注',
+          key: 'age'
+        },
+        {
+          title: '审核时间',
+          key: 'address'
+        },
+        {
+          title: '质检员',
+          key: 'address'
+        },
+        {
+          title: 'Action',
+          key: 'action',
+          width: 150,
+          align: 'center',
+          render: (h, params) => {
+            return h('div', [
+              h('Button', {
+                props: {
+                    type: 'primary',
+                    size: 'small'
+                },
+                style: {
+                    marginRight: '5px'
+                },
+                on: {
+                    click: () => {
+                        this.show(params.index)
+                    }
+                }
+              }, params.row.keyValue),
+              h('Button', {
+                props: {
+                    type: 'primary',
+                    size: 'small'
+                },
+                on: {
+                    click: () => {
+                        this.remove(params.index)
+                    }
+                } 
+              }, '下载')
+            ])
+          }
+        }
+      ],
+      data6: [
+        {
+            name: '公司名称',
+            keyValue: '审核',
+            age: 18,
+            address: 'New York No. 1 Lake Park'
+        },
+        {
+            name: '文件名',
+            keyValue: '审核',
+            age: 24,
+            address: 'London No. 1 Lake Park'
+        },
+        {
+            name: 'Joe Black',
+            keyValue: '审核',
+            age: 30,
+            address: 'Sydney No. 1 Lake Park'
+        },
+        {
+            name: 'Jon Snow',
+            keyValue: '已审核',
+            age: 26,
+            address: 'Ottawa No. 2 Lake Park'
+        }
+      ]
     };
   }
 };

@@ -108,14 +108,19 @@
       }
     }
     .audioContent{
+      display: box;
+      display: -webkit-box;
       width: 94%;
       margin: 20px auto;
+      background: #f3f5f9;
       .contentLeft{
         width: 50%;
         height: 500px;
         padding: 20px;
         overflow: scroll;
-        box-shadow: 1px 0 5px #eee;
+        background: #fff;
+        border: 2px solid #f6f6f6;
+        box-sizing: border-box;
         .talkLeft{
           font-size: 0;
           margin: 0 50px 20px 0;
@@ -188,6 +193,115 @@
               position: absolute;
               top: 0;
               right: -5px;
+            }
+          }
+        }
+      }
+      .contentRight{
+        flex: 1;
+        margin: 20px;
+        .rightBox1{
+          color: #333;
+          font-size: 14px;
+          height: 40px;
+          line-height: 40px;
+          padding: 0 10px;
+          margin: 0 0 10px 0;
+          border-radius: 2px;
+          box-sizing: border-box;
+          background: #fff;
+          .color{
+            color: #ff0500;
+          }
+        }
+        .rightBox2{
+          display: box;
+          display: -webkit-box;
+          padding: 20px;
+          margin: 0 0 10px 0;
+          background: #fff;
+          border-radius: 2px;
+          box-sizing: border-box;
+          .boxLeft{
+            width: 150px;
+            .title{
+              color: #666;
+              font-size: 12px;
+              line-height: 12px;
+            }
+            ul li{
+              color: 333;
+              font-size: 14px;
+              margin: 15px 0 0 0;
+            }
+          }
+          .boxRight{
+            flex: 1;
+            .title{
+              color: #666;
+              font-size: 12px;
+              line-height: 12px;
+            }
+            ul li{
+              color: 333;
+              font-size: 14px;
+              margin: 15px 0 0 0;
+              span{
+                margin: 0 15px 0 0;
+              }
+            }
+          }
+        }
+        .rightBox3{
+          padding: 20px;
+          margin: 0 0 10px 0;
+          background: #fff;
+          border-radius: 2px;
+          box-sizing: border-box;
+          .title{
+            color: #fff;
+            font-size: 14px;
+            width: 110px;
+            height: 34px;
+            line-height: 34px;
+            text-align: center;
+            border-radius: 4px;
+            background: #758DFF;
+          }
+          textarea{
+            width: 400px;
+            height: 70px;
+            margin: 10px 0 0 0;
+            border-radius: 2px;
+            border: 1px solid #e1e1e1;
+          }
+          .button{
+            font-size: 0;
+            width: 100%;
+            margin: 30px 0 0 0;
+            text-align: center;
+            .submit{
+              display: inline-block;
+              color: #fff;
+              font-size: 14px;
+              width: 120px;
+              height: 40px;
+              line-height: 40px;
+              text-align: center;
+              border-radius: 4px;
+              margin: 0 30px 0 0;
+              background: #758DFF;
+            }
+            .cancel{
+              display: inline-block;
+              color: #666;
+              font-size: 14px;
+              width: 120px;
+              height: 40px;
+              line-height: 40px;
+              text-align: center;
+              border-radius: 4px;
+              border: 1px solid #dadada;
             }
           }
         }
@@ -267,7 +381,46 @@
           <span class="talkContent">您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签您的浏览器不支持标签</span>
         </div>
       </div>
-      <div class="contentRight"></div>
+      <div class="contentRight">
+        <div class="rightBox1">
+          <span>AI质检结果</span>
+          <span class="color">合格</span>
+        </div>
+        <div class="rightBox1">
+          <span>人工质检结果</span>
+          <span class="color">合格</span>
+        </div>
+        <div class="rightBox2">
+          <div class="boxLeft">
+            <div class="title">
+              <span>正向质检模型</span>
+            </div>
+            <ul>
+              <li>专业水平</li>
+              <li>辱骂</li>
+            </ul>
+          </div>
+          <div class="boxRight">
+            <div class="title">
+              <span>命中关键字</span>
+            </div>
+            <ul>
+              <li><span>辱骂</span><span>专业水平</span><span>辱骂</span><span>专业水平</span></li>
+              <li>辱骂</li>
+            </ul>
+          </div>
+        </div>
+        <div class="rightBox3">
+          <div class="title">
+            <span>增加审核项</span>
+          </div>
+          <textarea placeholder="备注内容..."></textarea>
+          <div class="button">
+            <div class="submit">保存</div>
+            <div class="cancel">取消</div>
+          </div>
+        </div>
+      </div>
     </div>
     <audio ref="audio">
       <source src="../11.mp3" type="audio/mpeg">  
